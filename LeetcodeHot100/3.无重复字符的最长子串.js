@@ -1,8 +1,3 @@
-/**
- * @param {string} s
- * @return {number}
- * 
- */
 var lengthOfLongestSubstring5 = function (s) {
     let res = 0;
     let left = 0, right = 0;
