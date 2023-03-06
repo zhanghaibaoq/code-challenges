@@ -1,9 +1,3 @@
-/**
- * @param {number[]} nums
- * @param {number} target
- * @return {number[]}
- */
-
 /* 
  暴力 :时间 O(n^2) 空间O(1)
 */
