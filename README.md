@@ -1,1 +1,1 @@
-# 记录个 LeetCodeHot100
+# 记录 1 个 LeetCodeHot100
