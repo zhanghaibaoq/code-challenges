@@ -5,7 +5,7 @@
  */
 var search = function (nums, target) {
   let left = 0, right = nums.length - 1;
-  let mid;
+  let mid=0;
   while (left <= right) {
     // let mid = Math.floor((right - left) / 2 + left);
     mid = ((right - left) >> 1) + left;
