@@ -4,8 +4,8 @@
  */
 // 双指针+排序
 var threeSum = function (nums) {
-  let res = [];
-  let len = nums.length;
+  const res = [];
+  const len = nums.length;
   nums.sort((a, b) => a - b);
   if (len < 3) return res;
   // nums[i]为基准 三数之和>o => r--; <0 =>l++ 

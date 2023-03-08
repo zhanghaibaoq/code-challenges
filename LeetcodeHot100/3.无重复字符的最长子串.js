@@ -15,6 +15,22 @@ var lengthOfLongestSubstring5 = function (s) {
     return res;
 };
 
+var lengthOfLongestSubstring3 = function (s) {
+    if (s.length < 2) return s.length;
+    let max = 1;
+    let right = 1;
+    let arr = [s[0]];
+    while (right < s.length) {
+        if (arr.includes(s[right])) {
+            // 超时：arr = arr.slice(arr.indexOf(s[right]));,  
+            arr.splice(0, arr.indexOf(s[right]) + 1);
+        } else {
+            arr.push(s[right++]);
+            max = Math.max(max, arr.length);
+        }
+    }
+    return max;
+};
 const lengthOfLongestSubstring2 = s => {
     // 滑动窗口初始化为一个空数组
     let arr = [];
@@ -182,11 +198,18 @@ function foo () {
 foo(1, 2, 3);// 1 2 3
 
 // for in 会遍历原型链上的属性
-function Foo () {
-    this.a = 1;
-}
-Foo.prototype.b = 2;
-const foo = new Foo();
-for (let key in foo) {
-    console.log(key);// a b
-}
+// function Foo () {
+//     this.a = 1;
+// }
+// Foo.prototype.b = 2;
+// const foo = new Foo();
+// for (let key in foo) {
+//     console.log(key);// a b
+// }
+
+let arr1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+// arr1.splice(0, 3);
+// console.log(arr1);// [ 4, 5, 6, 7, 8, 9, 10 ]
+arr1 = arr1.slice(0, 3);
+console.log(arr1);
+console.log(arr1.indexOf(7));
