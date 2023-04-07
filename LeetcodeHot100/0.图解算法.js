@@ -1,3 +1,10 @@
+// let arr = [22, 18, 24, 222, 0, 99, 29, 18, 91, 11111];
+// // let arr = [];
+// // for (let i = 0; i < 20; i++) {
+// //   arr.push(Math.floor(Math.random() * 1000));
+// // }
+// module.exports = { arr };
+
 // https://juejin.cn/post/6844904144566747149 JavaScript算法时间、空间复杂度分析
 const { arr } = require('./data');
 
@@ -83,3 +90,45 @@ const quickSort3 = (arr) => {
 console.log(quickSort3(arr));
 
 
+
+
+
+// /* 字符串反转 */
+const reverse1 = (str) => {
+  return str.split('').reverse().join('');
+};
+const reverse2 = (str) => {
+  let result = '';
+  // for (let i = str.length - 1; i >= 0; i--) {
+  //   result += str[i];
+  // }
+  // return result;
+  for (let i of str) {
+    result = i + result;
+  }
+  return result;
+};
+console.log(reverse1('hello'));
+console.log(reverse2('hello'));
+console.log('hello'.split('')); //[ 'h', 'e', 'l', 'l', 'o' ]
+console.log(('hello'.split('')).reverse());
+/* 判断是否是回文 */
+const isPalindrome = (str) => str.split('').every((item, index) => item === str[str.length - index - 1]);
+console.log(isPalindrome('hello')); //false
+console.log(isPalindrome('racecar')); //true
+
+/* 整数反转 */
+const reverseInt = (num) => {
+  const result = num.toString().split('').reverse().join('');
+  return parseInt(result) * Math.sign(num);
+};
+const reverseInt2 = (num) => {
+  let result = 0;
+  while (num !== 0) {
+    result = result * 10 + (num % 10);
+    num = parseInt(num / 10);
+  }
+  return result;
+};
+console.log(reverseInt2(-1230));
+console.log(reverseInt(-1230));
