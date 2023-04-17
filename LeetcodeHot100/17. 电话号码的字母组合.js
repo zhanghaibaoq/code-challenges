@@ -1,6 +1,6 @@
 // https://www.bilibili.com/video/BV1cy4y167mM/?vd_source=eac7ee3e188e81d32edf392ab1aa352c
 /* 
-回溯法的搜索过程就是一个树型结构的遍历过程，for循环用来横向遍历，递归的过程是纵向遍历。
+回溯法的搜索过程就是一个树型结构的遍历过程，for循环用来横向遍历，递归的过程是纵向遍历
 
 let result=[]
 function backtracking(参数) {
