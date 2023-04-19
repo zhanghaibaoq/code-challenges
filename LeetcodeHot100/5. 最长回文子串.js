@@ -2,7 +2,7 @@
  * @param {string} s
  * @return {string}
  */
-// 我写的
+// 我写的笨方法
 var longestPalindrome = function (s) {
   let res = s[0];
   for (let i = 0; i < s.length - 1; i++) {

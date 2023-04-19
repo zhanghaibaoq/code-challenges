@@ -90,9 +90,6 @@ const quickSort3 = (arr) => {
 console.log(quickSort3(arr));
 
 
-
-
-
 // /* 字符串反转 */
 const reverse1 = (str) => {
   return str.split('').reverse().join('');
@@ -108,10 +105,12 @@ const reverse2 = (str) => {
   }
   return result;
 };
+
 console.log(reverse1('hello'));
 console.log(reverse2('hello'));
 console.log('hello'.split('')); //[ 'h', 'e', 'l', 'l', 'o' ]
 console.log(('hello'.split('')).reverse());
+
 /* 判断是否是回文 */
 const isPalindrome = (str) => str.split('').every((item, index) => item === str[str.length - index - 1]);
 console.log(isPalindrome('hello')); //false
