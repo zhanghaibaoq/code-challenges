@@ -13,6 +13,12 @@ var mergeKLists = function (lists) {
     const temp = [];
     if (lists.length === 0) return null;
     for (let i = 0; i < lists.length; i++) {
+        // const l = lists[i];
+        // let p = l;
+        // while (p) {
+        //     temp.push(p.val);
+        //     p = p.next;
+        // }
         while (lists[i]) {
             temp.push(lists[i].val);
             lists[i] = lists[i].next;
