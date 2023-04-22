@@ -16,8 +16,8 @@ const climbStairs1 = n => {
 
 // 迭代
 const climbStairs2 = n => {
-    let pre = 1, cur = 2;//pre倒数第二个数，cur倒数第一个数
     if (n <= 2) return n;
+    let pre = 1, cur = 2;//pre倒数第二个数，cur倒数第一个数
     for (let i = 3; i <= n; i++) {
         // let temp = pre;
         // pre = cur;
@@ -28,7 +28,7 @@ const climbStairs2 = n => {
     return cur;
 }
 
-// 记忆化递归
+// 记忆化递归, 
 const climbStairs3 = n => {
     const memo = [null, 1, 2];
     const helper = n => {
