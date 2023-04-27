@@ -106,6 +106,24 @@ const tree1 = {
  5   7    11
 */
 
+function bfs1 (root) {
+  const q = [root]
+  while (q.length > 0) {
+    const n = q.shift()
+    console.log(n.val)
+    if (n.left) q.push(n.left)
+    if (n.right) q.push(n.right)
+  }
+}
+// bfs1(tree1) // 输出：8 6 10 5 7 11
+
+function dfs1 (root) {
+  console.log(root.val)
+  if (root.left) dfs1(root.left)
+  if (root.right) dfs1(root.right)
+}
+// dfs1(tree1)  // 输出：8 6 5 7 10 11
+
 
 // 二叉树的前序遍历--递归 根左右
 const prrderTraversal = (root) => {
@@ -219,7 +237,7 @@ const printTree = (root) => {
   }
   return res
 }
-// console.log(printTree(tree1)) // 输出：[ [ 8 ], [ 6, 10 ], [ 5, 7, 11 ] ]
+console.log(printTree(tree1)) // 输出：[ [ 8 ], [ 6, 10 ], [ 5, 7, 11 ] ]
 
 // 二叉树的最大深度
 const maxDepth = (root) => {
@@ -361,45 +379,45 @@ const lowestCommonAncestor = (root, p, q) => {
 // 二叉树的所有路径
 const binaryTreePaths = root => {
   // 返回的数组
-  const res = [];
+  const res = []
   // 定义获得路径的函数
   const getPath = (root, path) => {
-      // 当前节点有值
-      if (root) {
-          // path加上当前节点的值
-          path += root.val.toString();
-          if (!root.left && !root.right) {
-              // 当前节点送是叶子节点
-              // 将路径放入到res
-              res.push(path);
-          } else {
-              // 不是叶子节点，加上'->'，递归遍历
-              path += '->';
-              getPath(root.left, path);
-              getPath(root.right, path);
-          }
+    // 当前节点有值
+    if (root) {
+      // path加上当前节点的值
+      path += root.val.toString()
+      if (!root.left && !root.right) {
+        // 当前节点送是叶子节点
+        // 将路径放入到res
+        res.push(path)
+      } else {
+        // 不是叶子节点，加上'->'，递归遍历
+        path += '->'
+        getPath(root.left, path)
+        getPath(root.right, path)
       }
-  };
+    }
+  }
   // path一开始为空
-  getPath(root, '');
-  return res;
-};
+  getPath(root, '')
+  return res
+}
 // console.log(binaryTreePaths(tree1))  // 输出：[ '8->6->5', '8->6->7', '8->10->11' ]
 
 
 //  二叉树中的最大路径和
 const maxPathSum = (root) => {
-  let res = -Infinity; // 或者Number.MIN_SAFE_INTEGER
+  let res = -Infinity // 或者Number.MIN_SAFE_INTEGER
   const dfs = root => {
-    if (!root) return 0;
+    if (!root) return 0
     // 左右子树返回的路径和，若小于0则置0，表示舍去这条路径
-    const left = Math.max(0, dfs(root.left));
-    const right = Math.max(0, dfs(root.right));
-    res = Math.max(res, root.val + left + right);
+    const left = Math.max(0, dfs(root.left))
+    const right = Math.max(0, dfs(root.right))
+    res = Math.max(res, root.val + left + right)
     // 返回上一级递归，只能选左右子树中较大的那一条路径
-    return Math.max(left, right) + root.val;
-  };
-  dfs(root);
-  return res;
+    return Math.max(left, right) + root.val
+  }
+  dfs(root)
+  return res
 };
 // console.log(maxPathSum(tree1))  // 输出：31

@@ -36,5 +36,3 @@
 //   console.log(current.val);
 //   current = current.next; //指向下一个节点
 // }
-
-
