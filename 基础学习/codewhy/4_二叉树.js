@@ -19,7 +19,7 @@ class BinarySearchTree {
     const newNode = new Node(key);
     // 2.判断根节点是否存在
     if (this.root == null) {
-      this.root = newNode;
+      this.root = newNode; 
     } else {
       insertNode(this.root, newNode);
     }

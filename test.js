@@ -36,3 +36,61 @@
 //   console.log(current.val);
 //   current = current.next; //指向下一个节点
 // }
+
+// 对象扁平化
+// const obj = {
+//   a: {
+//     b: {
+//       c: 1
+//     }
+//   },
+//   d: {
+//     e: 2
+//   }
+// }
+// const flatten = (obj, prefix = '') => {
+//   const res = {}
+//   Object.keys(obj).forEach(key => {
+//     if (typeof obj[key] === 'object') {
+//       Object.assign(res, flatten(obj[key], prefix + key + '.'))
+//     } else {
+//       res[prefix + key] = obj[key]
+//     }
+//   })
+//   return res
+// }
+// console.log(flatten(obj))
+// function mynew(Func, ...args) {
+//   // 1.创建一个新对象
+//   const obj = {}
+//   // 2.新对象原型指向构造函数原型对象
+//   obj.__proto__ = Func.prototype
+//   // 3.将构建函数的this指向新对象
+//   //通过apply 来执行  apply是改变this 并执行
+//   let result = Func.apply(obj, args)
+//   // 4.根据返回值判断
+//   return result instanceof Object ? result : obj
+// }
+
+// //测
+// function Person(name, age) {
+//   this.name = name;
+//   this.age = age;
+// }
+// Person.prototype.say = function () {
+//   console.log(this.name)
+// }
+
+// let p = mynew(Person, "huihui", 123)
+// console.log(p) // Person {name: "huihui", age: 123}
+// p.say() // huihui
+
+const promise1 = new Promise((resolve, reject) => {
+  console.log('promise1');
+  resolve('resolve1');
+});
+const promise2 = promise1.then(res => {
+  console.log(res);
+});
+console.log('1', promise1);
+console.log('2', promise2);

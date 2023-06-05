@@ -32,27 +32,8 @@ const isSymmetric = root => {
     return check(root.left, root.right);
 };
 
-// 递归：
-const isSymmetric1 = root => {
-    if (!root) return true;
-
-    // 判断两个树是否镜像
-    const isMirror = (l, r) => {
-        // 递归出口，两树都为空，true
-        if (!l && !r) return true;
-        // 左节点=右节点、两个树的子树分别对应镜像时，true
-        if (l && r && l.val === r.val && isMirror(l.left, r.right) && isMirror(l.right, r.left)) {
-            return true;
-        }
-        // 其他情况false
-        return false;
-    };
-    return isMirror(root.left, root.right);
-};
-
 const isSymmetric2 = root => {
     if (!root) return true;
-
     // 根节点的左右节点入队
     const queue = [root.left, root.right];
     while (queue.length) {

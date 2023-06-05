@@ -39,28 +39,60 @@ tree的结构如下：
    b  c
   / \  \ 
  d  e   g
-/
-f    
+   /
+  f    
 
 */
 
 // 深度优先遍历 
 const dfs = (root) => {
+  if (!root) return
   console.log(root.val)
   root.children.forEach(child => {
-    if (child) dfs(child)
+    dfs(child)
   })
-  // for (let i = 0; i < root.children.length; i++) {
-  //   const child = root.children[i]
-  //   if (child) dfs(child)
-  // }
 }
+
+// dfs迭代写法
+const dfs2 =  (root) => {
+  if (!root) return
+  const stack = [root]
+  while (stack.length > 0) {
+    const n = stack.pop()
+    console.log(n.val)
+    // 先放右节点，再放左节点
+    n.children.forEach(child => {
+      if (child) stack.push(child)
+    })
+  }
+}
+
+// 迭代写法2
+function dfs3(node) {
+  if (!node) return;
+  const stack = [node];
+  while (stack.length > 0) {
+    const current = stack.pop();
+    console.log(current.val);
+    for (let i = current.children.length - 1; i >= 0; i--) {
+      const child = current.children[i];
+      if (child) {
+        stack.push(child);
+      }
+    }
+  }
+}
+
+// dfs3(tree);// a b d e f c g
 // dfs(tree)  // 输出：a b d e f c g
+// dfs2 (tree)  // 输出：a c g b e f d
 
 // 广度优先遍历:使用一个队列 q，将根节点入队列，循环遍历队列，每次取出队列首节点，输出其值，然后将其子节点依次入队列。
 const bfs = (root) => {
+  if (!root) return
   const q = [root]
   while (q.length > 0) {
+    // 注意：bfs和dfs2的区别就是这里，bfs是shift，dfs2是pop
     const n = q.shift()
     console.log(n.val)
     n.children.forEach(child => {
@@ -107,6 +139,7 @@ const tree1 = {
 */
 
 function bfs1 (root) {
+  if (!root) return
   const q = [root]
   while (q.length > 0) {
     const n = q.shift()
@@ -115,12 +148,28 @@ function bfs1 (root) {
     if (n.right) q.push(n.right)
   }
 }
-// bfs1(tree1) // 输出：8 6 10 5 7 11
+bfs1(tree1) // 输出：8 6 10 5 7 11
+
+// 注意观察bfs1 dfs11他们的差别
+
+function dfs11 (root) {
+  if (!root) return
+  const q = [root]
+  while (q.length > 0) {
+    const n = q.pop()
+    console.log(n.val)
+    if (n.right) q.push(n.right)
+    if (n.left) q.push(n.left)
+  }
+}
+// dfs11(tree1) // 输出：8 6 5 7 10 11
+
 
 function dfs1 (root) {
-  console.log(root.val)
-  if (root.left) dfs1(root.left)
-  if (root.right) dfs1(root.right)
+  if (!root) return
+  console.log(root.val) //打印当前节点值
+  if (root.left) dfs1(root.left) // 递归左子树
+  if (root.right) dfs1(root.right) // 递归右子树
 }
 // dfs1(tree1)  // 输出：8 6 5 7 10 11
 
@@ -237,7 +286,7 @@ const printTree = (root) => {
   }
   return res
 }
-console.log(printTree(tree1)) // 输出：[ [ 8 ], [ 6, 10 ], [ 5, 7, 11 ] ]
+// console.log(printTree(tree1)) // 输出：[ [ 8 ], [ 6, 10 ], [ 5, 7, 11 ] ]
 
 // 二叉树的最大深度
 const maxDepth = (root) => {

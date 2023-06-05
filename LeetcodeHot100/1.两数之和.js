@@ -58,8 +58,8 @@ console.log(map.size);//3
 console.log(map.has("c"));//true
 console.log(map.delete("c"));//true
 console.log(map.size);//2
-map.clear();//清空map
-console.log(map.size);//0
+// map.clear();//清空map
+// console.log(map.size);//0
 
 
 //map的迭代
@@ -76,6 +76,10 @@ for (let item of map.entries()) {//entries()方法返回一个新的Iterator对�
   console.log(item);//[ 'a', 111 ] [ 'b', 222 ]
 }
 for (let [key, value] of map.entries()) {
+  console.log(key, value);//a 111 b 222
+}
+
+for (let [key, value] of map) {
   console.log(key, value);//a 111 b 222
 }
 
