@@ -85,12 +85,38 @@
 // console.log(p) // Person {name: "huihui", age: 123}
 // p.say() // huihui
 
-const promise1 = new Promise((resolve, reject) => {
-  console.log('promise1');
-  resolve('resolve1');
-});
-const promise2 = promise1.then(res => {
-  console.log(res);
-});
-console.log('1', promise1);
-console.log('2', promise2);
+const obj={
+  [Symbol('a')]:1,
+  'b':undefined,
+  'c':function(){},
+}
+console.log(Reflect.ownKeys(obj));
+console.log(Object.getOwnPropertyNames(obj));
+console.log(Object.getOwnPropertySymbols(obj));
+console.log(Object.keys(obj));
+/* 
+[ 'b', 'c', Symbol(a) ]
+[ 'b', 'c' ]
+[ Symbol(a) ]
+[ 'b', 'c' ]
+*/
+
+function objectFlat(obj = {}) {
+  const res = {}
+  function flat(item, preKey = '') {
+    Object.entries(item).forEach(([key, val]) => {
+      const newKey = preKey ? `${preKey}.${key}` : key
+      if (val && typeof val === 'object') {
+        flat(val, newKey)
+      } else {
+        res[newKey] = val
+      }
+    })
+  }
+  flat(obj)
+  return res
+}
+
+// 测试
+const source = { a: { b: { c: 1, d: 2 }, e: 3 }, f: { g: 2 } }
+console.log(objectFlat(source));
