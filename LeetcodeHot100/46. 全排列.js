@@ -1,6 +1,7 @@
 /**
  * @param {number[]} nums
  * @return {number[][]}
+ * 给定一个不含重复数字的数组 nums ，返回其 所有可能的全排列 。你可以 按任意顺序 返回答案。
  */
 //  https://www.bilibili.com/video/BV1Da411X7NH?p=24&vd_source=eac7ee3e188e81d32edf392ab1aa352c
 

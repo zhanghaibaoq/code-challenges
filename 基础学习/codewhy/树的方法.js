@@ -297,7 +297,7 @@ const maxDepth = (root) => {
 }
 // console.log(maxDepth(tree1))  // 输出：3
 
-// 二叉树的最大深度
+// 二叉树的最大深度2
 const maxDepth1 = (root) => {
   if (!root) return 0
   const q = [[root, 1]] // 二叉树节点和对应的深度
