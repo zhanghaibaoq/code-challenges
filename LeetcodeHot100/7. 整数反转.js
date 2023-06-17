@@ -1,7 +1,4 @@
-/**
- * @param {number} x
- * @return {number}
- */
+
 var reverse = function (x) {
   const Max = Math.pow(2, 31) - 1;
   const Min = -Math.pow(2, 31);

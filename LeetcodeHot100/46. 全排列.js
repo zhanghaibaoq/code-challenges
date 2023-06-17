@@ -20,13 +20,13 @@ function backtrack (list, temp, nums) {
     temp.pop();
   }
 }
-var permute = function (nums) {
+
+const permute = function (nums) {
   // 1、终止条件
   let list = [];
   backtrack(list, [], nums);
   return list;
 };
-
 
 
 const permute2 = nums => {
