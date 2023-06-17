@@ -20,7 +20,7 @@ var search = function (nums, target) {
   return -1;
 };
 
-// 二维数组-二分查找
+// 二维数组的二分查找
 // 我们从数组中的左下角开始查找，左下角的数字 行：array.length-1   列：0，
 // 如果目标值等于该值，则返回true；如果目标值大于该值则j++(向右移动);如果目标值小于该值则i--(向上移动）
 var searchMatrix = function (matrix, target) {
