@@ -1,8 +1,3 @@
-/**
- * @param {number[]} nums
- * @param {number} target
- * @return {number}
- */
 var search = function (nums, target) {
   let left = 0, right = nums.length - 1;
   let mid = 0;
