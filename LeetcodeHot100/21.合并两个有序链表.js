@@ -58,6 +58,6 @@ l2.next.next = new ListNode(4)
 
 // console.log(mergeTwoLists1(l1, l2));
 
-for (let p = mergeTwoLists1(l1, l2); p; p = p.next) {
+for (let p = mergeTwoLists(l1, l2); p; p = p.next) {
     console.log(p.val)// 1 1 2 3 4 4
 }

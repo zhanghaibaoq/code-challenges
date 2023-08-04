@@ -20,8 +20,6 @@ var twoSum2 = function (nums, target) {
     }
   }
 };
-// const obj = { a: 1, b: 2 };
-// console.log('a' in obj); // true
 
 const twoSum3 = (nums, target) => {
   const map = new Map();

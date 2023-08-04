@@ -14,3 +14,15 @@ var isPalindrome = function (head) {
     return arr.every((item, index) => item === arr[arr.length - index - 1]);
     // return arr.join('') == arr.reverse().join('') // 翻转数组判断与原数组相同
 };
+
+
+// 秀
+var isPalindrome = function (head) {
+    let a = '', b = '';
+    while (head != null) {
+        a = a + head.val;
+        b = head.val + b;
+        head = head.next;
+    }
+    return a === b;
+};

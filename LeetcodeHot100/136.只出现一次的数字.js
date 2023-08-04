@@ -14,6 +14,7 @@ var singleNumber = function (nums) {
         res ^= num; //异或运算
     });
     return res;
+    
     // return nums.reduce((a,b)=>a^b)
 };
 

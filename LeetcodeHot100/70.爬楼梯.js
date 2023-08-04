@@ -40,5 +40,5 @@ const climbStairs3 = n => {
 }
 
 console.time('test'); 
-console.log(climbStairs3(9000))
+console.log(climbStairs3(900))
 console.timeEnd('test');

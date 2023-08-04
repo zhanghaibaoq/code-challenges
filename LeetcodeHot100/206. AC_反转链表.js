@@ -1,3 +1,4 @@
+// https://leetcode.cn/problems/reverse-linked-list/solutions/2136119/jian-dan-yi-dong-javac-pythonjsgo-dong-h-8hvk/?envType=featured-list&envId=2cktkvj
 const reverseList = head => {
     // 定义cur指向头部
     // pre指向头部前面的null
@@ -32,7 +33,7 @@ var reverseList2 = function (head) {
 // 数组保存 
 var reverseList3 = function (head) {
     let res = new ListNode();
-    let p = res;
+    let p = res;// 保存头部
     const arr = [];
     while (head) {
         arr.push(head.val);
@@ -57,7 +58,6 @@ var reverseList3 = function (head) {
     return res.next;
 };
 
-// 递归 https://leetcode.cn/problems/reverse-linked-list/solution/shi-pin-jiang-jie-die-dai-he-di-gui-hen-hswxy/
 var reverseList4 = function (head) {
     if (!head || !head.next) return head;
     const p = reverseList4(head.next);
@@ -74,7 +74,7 @@ class ListNode {
     }
 }
 let head = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))));
-let head1 = reverseList1(head);
+let head1 = reverseList(head);
 while (head1) {
     console.log(head1.val);
     head1 = head1.next;

@@ -62,7 +62,7 @@ const dfs2 =  (root) => {
     console.log(n.val)
     // 先放右节点，再放左节点
     n.children.forEach(child => {
-      if (child) stack.push(child)
+      stack.push(child)
     })
   }
 }
@@ -103,6 +103,7 @@ const bfs = (root) => {
 // bfs(tree)  // 输出：a b c d e g f
 
 
+
 // 二叉树
 const tree1 = {
   val: 8,
@@ -138,6 +139,9 @@ const tree1 = {
  5   7    11
 */
 
+// 广度优先遍历--迭代
+// 使用一个队列 q，将根节点入队列，循环遍历队列，
+// 每次取出队列首节点，输出其值，然后将其子节点依次入队列。
 function bfs1 (root) {
   if (!root) return
   const q = [root]
@@ -148,18 +152,19 @@ function bfs1 (root) {
     if (n.right) q.push(n.right)
   }
 }
-bfs1(tree1) // 输出：8 6 10 5 7 11
+// bfs1(tree1) // 输出：8 6 10 5 7 11
 
-// 注意观察bfs1 dfs11他们的差别
-
+// 深度优先遍历--迭代
+// 使用一个栈 stack，初始时栈中有一个节点
+// 循环取出栈顶节点，输出其值，然后将其子节点逆序推入栈中。
 function dfs11 (root) {
   if (!root) return
-  const q = [root]
-  while (q.length > 0) {
-    const n = q.pop()
+  const stack  = [root]
+  while (stack .length > 0) {
+    const n = stack .pop()
     console.log(n.val)
-    if (n.right) q.push(n.right)
-    if (n.left) q.push(n.left)
+    if (n.right) stack.push(n.right)
+    if (n.left) stack.push(n.left)
   }
 }
 // dfs11(tree1) // 输出：8 6 5 7 10 11
@@ -168,10 +173,10 @@ function dfs11 (root) {
 function dfs1 (root) {
   if (!root) return
   console.log(root.val) //打印当前节点值
-  if (root.left) dfs1(root.left) // 递归左子树
-  if (root.right) dfs1(root.right) // 递归右子树
+  dfs1(root.left) // 递归左子树
+  dfs1(root.right) // 递归右子树
 }
-// dfs1(tree1)  // 输出：8 6 5 7 10 11
+dfs1(tree1)  // 输出：8 6 5 7 10 11
 
 
 // 二叉树的前序遍历--递归 根左右

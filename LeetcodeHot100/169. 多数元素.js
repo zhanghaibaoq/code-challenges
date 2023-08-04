@@ -56,3 +56,13 @@ const majorityElement = nums => {
 //     let res = [...map.keys()].sort((a, b) => map.get(b) - map.get(a));
 //     return res[0]
 // };
+
+// 循环数组，用哈希表存储数字和对应的个数，如果数字出现的个数大于n/2则返回这个数
+var majorityElement3 = function (nums) {
+    let half = nums.length / 2;
+    let obj = {};
+    for (let num of nums) {
+        obj[num] = (obj[num] || 0) + 1;
+        if (obj[num] > half) return num;
+    }
+};

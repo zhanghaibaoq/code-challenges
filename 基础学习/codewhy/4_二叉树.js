@@ -18,7 +18,7 @@ class BinarySearchTree {
     // 1.根据key创建节点
     const newNode = new Node(key);
     // 2.判断根节点是否存在
-    if (this.root == null) {
+    if (!this.root) {
       this.root = newNode; 
     } else {
       insertNode(this.root, newNode);
@@ -41,6 +41,70 @@ class BinarySearchTree {
       }
     }
   }
+  
+// https://juejin.cn/post/7146975493278367752#heading-22
+  insert2(data) {
+    var node = new Node(data);
+    // 创建根节点
+    if (!this.root) {
+      this.root = node;
+      return;
+    }
+    var current = this.root;
+    var parent = null;
+    while (current) {
+      parent = current;
+      // 值比父节点小，放到父节点的左子树上
+      if (data < parent.data) {
+        current = current.left;
+        // 找到最左侧的节点，将新的节点设置为该节点的左子树节点
+        if (!current) {
+          parent.left = node;
+          return;
+        }
+      } else {
+        // 值比父节点大，放到父节点的右子树上
+        current = current.right;
+        if (!current) {
+          parent.right = node;
+          return;
+        }
+      }
+    }
+  }
+
+  // dfs 深度优先遍历 递归
+  dfs (root) {
+    if (root == null) return;
+    console.log(root.key);
+    this.dfs(root.left);
+    this.dfs(root.right);
+  }
+
+  // dfs 深度优先遍历 迭代
+  dfs2 (root) {
+    if (root == null) return;
+    const stack = [root];
+    while (stack.length) {
+      const node = stack.pop();
+      console.log(node.key);
+      if (node.right) stack.push(node.right);
+      if (node.left) stack.push(node.left);
+    }
+  }
+
+  // bfs 广度优先遍历 迭代
+  bfs (root) {
+    if (root == null) return;
+    const queue = [root];
+    while (queue.length) {
+      const node = queue.shift();
+      console.log(node.key);
+      if (node.left) queue.push(node.left);
+      if (node.right) queue.push(node.right);
+    }
+  }
+
   // 前序遍历，先根节点，再左子树，再右子树
   preOrderTraverse (callback) {
     const preOrderTraverseNode = (node, callback) => {
