@@ -12,11 +12,10 @@ const findDisappearedNumbers = nums => {
 };
 
 function findDisappearedNumbers1(nums) {
-    const n = nums.length;
     const numSet = new Set(nums);
     const result = [];
 
-    for (let i = 1; i <= n; i++) {
+    for (let i = 1; i <= nums.length; i++) {
         if (!numSet.has(i)) {
             result.push(i);
         }
