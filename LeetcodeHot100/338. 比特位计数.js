@@ -39,6 +39,6 @@ const countOnes = (x) => {
     return ones; // 返回 "1" 的位数
 }
 
-let x=96;
-let y=x-1;
-console.log(x.toString(2),y.toString(2),x&y,(x&y).toString(2));
+let x=123;
+let y=434;
+console.log(x.toString(2),y.toString(2),x&y,(x&y).toString(2),x.toString(2).length);
