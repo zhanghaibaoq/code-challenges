@@ -85,38 +85,61 @@
 // console.log(p) // Person {name: "huihui", age: 123}
 // p.say() // huihui
 
-const obj={
-  [Symbol('a')]:1,
-  'b':undefined,
-  'c':function(){},
-}
-console.log(Reflect.ownKeys(obj));
-console.log(Object.getOwnPropertyNames(obj));
-console.log(Object.getOwnPropertySymbols(obj));
-console.log(Object.keys(obj));
-/* 
-[ 'b', 'c', Symbol(a) ]
-[ 'b', 'c' ]
-[ Symbol(a) ]
-[ 'b', 'c' ]
-*/
+// const obj={
+//   [Symbol('a')]:1,
+//   'b':undefined,
+//   'c':function(){},
+// }
+// console.log(Reflect.ownKeys(obj));
+// console.log(Object.getOwnPropertyNames(obj));
+// console.log(Object.getOwnPropertySymbols(obj));
+// console.log(Object.keys(obj));
+// /* 
+// [ 'b', 'c', Symbol(a) ]
+// [ 'b', 'c' ]
+// [ Symbol(a) ]
+// [ 'b', 'c' ]
+// */
 
-function objectFlat(obj = {}) {
-  const res = {}
-  function flat(item, preKey = '') {
-    Object.entries(item).forEach(([key, val]) => {
-      const newKey = preKey ? `${preKey}.${key}` : key
-      if (val && typeof val === 'object') {
-        flat(val, newKey)
-      } else {
-        res[newKey] = val
-      }
-    })
+// function objectFlat(obj = {}) {
+//   const res = {}
+//   function flat(item, preKey = '') {
+//     Object.entries(item).forEach(([key, val]) => {
+//       const newKey = preKey ? `${preKey}.${key}` : key
+//       if (val && typeof val === 'object') {
+//         flat(val, newKey)
+//       } else {
+//         res[newKey] = val
+//       }
+//     })
+//   }
+//   flat(obj)
+//   return res
+// }
+
+// // 测试
+// const source = { a: { b: { c: 1, d: 2 }, e: 3 }, f: { g: 2 } }
+// console.log(objectFlat(source));
+
+/* 
+输入一个长度为n的仅包含英文字母的字符串，下标从 1 开始。你对这个字符串进行如下操作Q次，第i次操作如下：
+
+• li，ri，k，表示复制原串中下标为li，li+1，…，ri的字符串，之后：如果k=0，则将其粘贴在字符串的前面；如果k=1，则将其粘贴在字符串的末尾。
+
+你需要输出经过Q次操作之后得到的字符串。
+*/
+function copyString(s, q, arr) {
+  let res = s
+  for (let i = 0; i < q; i++) {
+    const [l, r, k] = arr[i]
+    const str = res.slice(l - 1, r)
+    if (k === 0) {
+      res = str + res
+    } else {
+      res = res + str
+    }
   }
-  flat(obj)
   return res
 }
-
-// 测试
-const source = { a: { b: { c: 1, d: 2 }, e: 3 }, f: { g: 2 } }
-console.log(objectFlat(source));
+let q=2,arr=[[2,1],[4,7],[0,1]],s='XabcdeZ'
+console.log(copyString(s,q,arr));

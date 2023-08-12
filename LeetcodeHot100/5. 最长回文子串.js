@@ -56,6 +56,8 @@ const helper = (s, l, r) => {
   return s.slice(l + 1, r);
 };
 
+
+
 // 中心扩散法2
 var longestPalindrome2 = function (s) {
   if (s.length < 2) {
