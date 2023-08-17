@@ -120,26 +120,23 @@
 // // 测试
 // const source = { a: { b: { c: 1, d: 2 }, e: 3 }, f: { g: 2 } }
 // console.log(objectFlat(source));
+// let str = "This is a test string with let343ters.";
+// let result = "";
+// for (let i = 0; i < str.length; i++) {
+//   let char = str.charAt(i);
+//   if (char < "A" || char > "z" || (char > "Z" && char < "a")) {
+//     result += char;
+//   }
+// }
 
-/* 
-输入一个长度为n的仅包含英文字母的字符串，下标从 1 开始。你对这个字符串进行如下操作Q次，第i次操作如下：
+// var str = "a2119naskdna";
+// var newStr = str.replace(/[a-z|A-Z]/g, '');
+// console.log(newStr);
 
-• li，ri，k，表示复制原串中下标为li，li+1，…，ri的字符串，之后：如果k=0，则将其粘贴在字符串的前面；如果k=1，则将其粘贴在字符串的末尾。
 
-你需要输出经过Q次操作之后得到的字符串。
-*/
-function copyString(s, q, arr) {
-  let res = s
-  for (let i = 0; i < q; i++) {
-    const [l, r, k] = arr[i]
-    const str = res.slice(l - 1, r)
-    if (k === 0) {
-      res = str + res
-    } else {
-      res = res + str
-    }
-  }
-  return res
+const obj={
+  [Symbol('a')]:1,
+  'b':undefined,
+  'c':function(){},
 }
-let q=2,arr=[[2,1],[4,7],[0,1]],s='XabcdeZ'
-console.log(copyString(s,q,arr));
+console.log(Reflect.ownKeys(obj));
