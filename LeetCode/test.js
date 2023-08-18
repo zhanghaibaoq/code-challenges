@@ -134,9 +134,21 @@
 // console.log(newStr);
 
 
-const obj={
-  [Symbol('a')]:1,
-  'b':undefined,
-  'c':function(){},
+// const obj={
+//   [Symbol('a')]:1,
+//   'b':undefined,
+//   'c':function(){},
+// }
+// console.log(Reflect.ownKeys(obj));
+
+  
+function combine(arr1, arr2) {
+  const res = [];
+  for (let i = 0; i < arr1.length; i++) {
+    for (let j = 0; j < arr2.length; j++) {
+      res.push(arr1[i] + arr2[j]);
+    }
+  }
+  return res;
 }
-console.log(Reflect.ownKeys(obj));
+console.log(combine('','abc'));

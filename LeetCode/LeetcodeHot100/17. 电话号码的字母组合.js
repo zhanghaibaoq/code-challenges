@@ -66,4 +66,26 @@ var letterCombinations1 = function (digits) {
 };
 
 // 测试
-console.log(letterCombinations('23'));
+// console.log(letterCombinations('23'));
+
+//方法3 使用reduce
+const letterCombinations2 = digits => {
+  if (!digits) return [];
+  
+  function combine(str1, str2) {
+    const res = [];
+    for (let i = 0; i < str1.length; i++) {
+      for (let j = 0; j < str2.length; j++) {
+        res.push(str1[i] + str2[j]);
+      }
+    }
+    return res;
+  }
+
+  const map = [null, null, 'abc', 'def', 'ghi', 'jkl', 'mno', 'pqrs', 'tuv', 'wxyz'];
+  const res = digits.split('').map(item => map[item]).reduce((prev, cur) => {
+    return combine(prev, cur);
+  }, ['']);
+  return res;
+};
+console.log(letterCombinations2('2'));

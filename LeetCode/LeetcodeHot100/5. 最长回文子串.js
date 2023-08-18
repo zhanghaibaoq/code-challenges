@@ -29,6 +29,7 @@ const isPalindrome1 = (str) => {
 };
 
 const isPalindrome2 = (str) => str.split('').every((item, index) => item === str[str.length - index - 1]);
+//  return str.split('').every((item, index) => item === str.at(- 1 - index));
 
 // 最长回文子串, 中心扩展法, 从中心向两边扩展, 返回最长回文子串
 // 一种是回文子串长度为奇数（如aba，中心是b）
