@@ -1,21 +1,21 @@
-// const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2];
+// const arr = [1, 2, 1, 3, 4, 1, 2];
 // const newArr = arr.filter((item, index) => {
-//   return arr.indexOf(item) === index;
+//     return arr.indexOf(item) === index;
 // });
 // const newArr2 = Array.from(new Set(arr));
 // const newArr3 = [...new Set(arr)];
 // const newArr4 = arr.reduce((prev, cur) => {
-//   return prev.includes(cur) ? prev : [...prev, cur];
+//     console.log('prev:', prev, '-- cur:', cur);
+//     return prev.includes(cur) ? prev : [...prev, cur];
 // }, []);
-// console.log(newArr4);
 
 
-// //定义链表节点类
+//定义链表节点类
 // class ListNode {
-//   constructor(val=0) {
-//     this.val = val; //当前节点的值
-//     this.next = null; //指向下一个节点的指针，默认为null
-//   }
+//     constructor(val = 0) {
+//         this.val = val; //当前节点的值
+//         this.next = null; //指向下一个节点的指针，默认为null
+//     }
 // }
 
 // //构建链表
@@ -33,57 +33,78 @@
 // //输出链表
 // let current = node1; //从头节点开始遍历
 // while (current != null) { //一直遍历到链表末尾
-//   console.log(current.val);
-//   current = current.next; //指向下一个节点
+//     console.log(current.val);
+//     current = current.next; //指向下一个节点
 // }
 
 // 对象扁平化
 // const obj = {
-//   a: {
-//     b: {
-//       c: 1
+//     a: {
+//         b: {
+//             c: 1,
+//             f: 2
+//         }
+//     },
+//     d: {
+//         e: 2
 //     }
-//   },
-//   d: {
-//     e: 2
-//   }
-// }
+// };
+
 // const flatten = (obj, prefix = '') => {
-//   const res = {}
-//   Object.keys(obj).forEach(key => {
-//     if (typeof obj[key] === 'object') {
-//       Object.assign(res, flatten(obj[key], prefix + key + '.'))
-//     } else {
-//       res[prefix + key] = obj[key]
+//     console.log('prefix:', prefix);
+//     const res = {};
+//     Object.keys(obj).forEach(key => {
+//         console.log('key:', key);
+//         console.log('res:', res);
+//         if (typeof obj[key] === 'object') {
+//             Object.assign(res, flatten(obj[key], prefix + key + '.'));
+//             flatten(obj[key], prefix + key + '.')
+//         } else {
+//             res[prefix + key] = obj[key];
+//             console.log('res2:', res);
+//         }
+//     });
+//     return res;
+// };
+// console.log(flatten(obj));
+// function flatten (obj) {
+//     let res = {};
+//     function flat (obj, pre) {// pre是前缀
+//         for (let key in obj) {
+//             if (typeof obj[key] === 'object') {
+//                 flat(obj[key], pre ? pre + '.' + key : key);
+//             } else {
+//                 res[pre ? pre + '.' + key : key] = obj[key];
+//             }
+//         }
 //     }
-//   })
-//   return res
+//     flat(obj);
+//     return res;
 // }
-// console.log(flatten(obj))
-// function mynew(Func, ...args) {
-//   // 1.创建一个新对象
-//   const obj = {}
-//   // 2.新对象原型指向构造函数原型对象
-//   obj.__proto__ = Func.prototype
-//   // 3.将构建函数的this指向新对象
-//   //通过apply 来执行  apply是改变this 并执行
-//   let result = Func.apply(obj, args)
-//   // 4.根据返回值判断
-//   return result instanceof Object ? result : obj
+// function mynew (Func, ...args) {
+//     // 1.创建一个新对象
+//     const obj = {};
+//     // 2.新对象原型指向构造函数原型对象
+//     obj.__proto__ = Func.prototype;
+//     // 3.将构建函数的this指向新对象
+//     //通过apply 来执行  apply是改变this 并执行
+//     let result = Func.apply(obj, args);
+//     // 4.根据返回值判断
+//     return result instanceof Object ? result : obj;
 // }
 
 // //测
-// function Person(name, age) {
-//   this.name = name;
-//   this.age = age;
+// function Person (name, age) {
+//     this.name = name;
+//     this.age = age;
 // }
 // Person.prototype.say = function () {
-//   console.log(this.name)
-// }
+//     console.log(this.name);
+// };
 
-// let p = mynew(Person, "huihui", 123)
-// console.log(p) // Person {name: "huihui", age: 123}
-// p.say() // huihui
+// let p = mynew(Person, "huihui", 123);
+// console.log(p); // Person {name: "huihui", age: 123}
+// p.say(); // huihui
 
 // const obj={
 //   [Symbol('a')]:1,
@@ -94,7 +115,7 @@
 // console.log(Object.getOwnPropertyNames(obj));
 // console.log(Object.getOwnPropertySymbols(obj));
 // console.log(Object.keys(obj));
-// /* 
+// /*
 // [ 'b', 'c', Symbol(a) ]
 // [ 'b', 'c' ]
 // [ Symbol(a) ]
@@ -141,14 +162,18 @@
 // }
 // console.log(Reflect.ownKeys(obj));
 
-  
-function combine(arr1, arr2) {
-  const res = [];
-  for (let i = 0; i < arr1.length; i++) {
-    for (let j = 0; j < arr2.length; j++) {
-      res.push(arr1[i] + arr2[j]);
-    }
-  }
-  return res;
-}
-console.log(combine('','abc'));
+
+// const rl = require("readline").createInterface({ input: process.stdin });
+// var iter = rl[Symbol.asyncIterator]();
+// const readline = async () => (await iter.next()).value;
+
+// void async function () {
+//     // Write your code here
+//     while(line = await readline()){
+//         let tokens = line.split(' ');
+//         let a = parseInt(tokens[0]);
+//         let b = parseInt(tokens[1]);
+//         console.log(a + b);
+//     }
+// }()
+

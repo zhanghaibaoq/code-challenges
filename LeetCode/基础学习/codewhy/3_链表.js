@@ -176,10 +176,7 @@ class LinkedList { //链表类
 }
 let list = new LinkedList();
 list.append(1);
-list.append(2);
-list.append(3);
-list.append(4);
-list.append(5);
+console.log(removeNthFromEnd(list.head, 1));
 // console.dir(list, {
 //   depth: 100
 // });
@@ -187,20 +184,20 @@ list.append(5);
 // console.log(list.get(2));//3
 // console.log(list.get(4));//5
 // console.log(list.get(5));//null
-console.log(list.print());//1 2 3 4 5
-console.log(list.removeAt(0));//1
-console.log(list.print());//1 2 3 4 5
+// console.log(list.print());//1 2 3 4 5
+// console.log(list.removeAt(0));//1
+// console.log(list.print());//1 2 3 4 5
 
 
 // console.log('indexOf2:', list.indexOf(11));//1
 // console.log(list.indexOf(3));//2
 // list.update(2, 6);
 
-list.insert(0, 'a');
-list.insert(3, 'b');
-list.insert(5, 'c');
-list.insert(19, 'd');
-console.log(list.print());//a 1 2 b 3 c 4 5
+// list.insert(0, 'a');
+// list.insert(3, 'b');
+// list.insert(5, 'c');
+// list.insert(19, 'd');
+// console.log(list.print());//a 1 2 b 3 c 4 5
 
 
 //////////////////////////////////////////

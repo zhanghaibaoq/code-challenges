@@ -1,3 +1,24 @@
+var removeNthFromEnd = function (head, n) {
+    let length = 0;
+    let p = head;
+    while (p) {
+        length++;
+        p = p.next;
+    }
+
+    if (length === n) {
+        return head.next;
+    }
+
+    let targetIndex = length - n - 1;
+    p = head;
+    for (let i = 0; i < targetIndex; i++) {
+        p = p.next;
+    }
+    p.next = p?.next?.next;
+    return head;
+};
+
 // 快慢指针
 var removeNthFromEnd1 = function (head, n) {
     let [fast, slow] = [head, head];
@@ -68,17 +89,17 @@ const removeNthFromEnd = (head, n) => {
 // 笨方法
 var removeNthFromEnd3 = function (head, n) {
     let arr = [];
-    let temp = head
+    let temp = head;
     while (temp) {
-        arr.push(temp.val)
-        temp = temp.next
+        arr.push(temp.val);
+        temp = temp.next;
     }
-    arr.splice(arr.length - n , 1)
+    arr.splice(arr.length - n, 1);
     let resList = new ListNode();
-    let h=resList;
+    let h = resList;
     for (let node of arr) {
         h.next = new ListNode(node);
         h = h.next;
     }
     return resList.next;
-}
+};
