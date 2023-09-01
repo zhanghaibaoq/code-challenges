@@ -2,14 +2,14 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 
 <body>
 
-    <!-- 
+  <!-- 
 {
   tag: 'DIV',
   attrs:{
@@ -42,46 +42,47 @@
   </span>
 </div>
  -->
-    <script>
-        const vnode = {
-            tag: "DIV",
-            attrs: {
-                id: "app",
-                class: 'container',
-            },
-            children: [
-                {
-                    tag: "SPAN",
-                    attrs: {
-                        class: 'title',
-                    },
-                    children: [{ tag: "A", children: [] }],
-                },
-                {
-                    tag: "SPAN",
-                    children: [
-                        { tag: "A", children: [] },
-                        { tag: "A", children: [] },
-                    ],
-                },
-            ],
-        };
+  <script>
+    const vnode = {
+      tag: "DIV",
+      attrs: {
+        id: "app",
+        class: 'container',
+      },
+      children: [
+        {
+          tag: "SPAN",
+          attrs: {
+            class: 'title',
+          },
+          children: [{ tag: "A", children: [] }],
+        },
+        {
+          tag: "SPAN",
+          children: [
+            { tag: "A", children: [] },
+            { tag: "A", children: [] },
+          ],
+        },
+      ],
+    };
 
-        function render(vnode) {
-            const { tag, attrs = {}, children } = vnode;
-            //创建dom
-            let el = document.createElement(tag);
-            //添加attr
-            for (const key in attrs) {
-                el.setAttribute(key, attrs[key]);
-            }
-            //处理children
-            if (Array.isArray(children) && children.length > 0) {
-                children.forEach(child => el.appendChild(render(child)));//子元素添加在父元素中
-            }
-            return el
-        }
-        document.body.appendChild(render(vnode))
+    function render (vnode) {
+      const { tag, attrs = {}, children } = vnode;
+      //创建dom
+      let el = document.createElement(tag);
+      //添加attr
+      for (const key in attrs) {
+        el.setAttribute(key, attrs[key]);
+      }
+      //处理children
+      if (Array.isArray(children) && children.length > 0) {
+        //子元素添加在父元素中
+        children.forEach(child => el.appendChild(render(child)));
+      }
+      return el;
+    }
+    document.body.appendChild(render(vnode));
 
         // const container = document.body //document.getElementsByTagName("body")[0];
         // render(vnode, container);
@@ -98,7 +99,7 @@
         //     }
         //     container.appendChild(node);
         // }
-    </script>
+  </script>
 
 </body>
 

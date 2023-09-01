@@ -1,5 +1,5 @@
 // https://www.douyin.com/video/7231842461197356345
-
+// https://juejin.cn/post/7043758954496655397#heading-7
 // Promise A+ 规范, 只有一个 then 方法，没有 catch、finally 等方法
 // ES6 规范，有 then、catch、finally 等方法
 
@@ -10,7 +10,7 @@ class MyPromise {
   #state = PENDING;
   #result = undefined;
   #handlers = [];// 存放 then 中的回调函数
-  constructor(executor) {
+  constructor(func) {
     const resolve = (data) => {
       this.#changeState(FUlFILLED, data);
     };
@@ -18,7 +18,7 @@ class MyPromise {
       this.#changeState(REJECTED, reason);
     };
     try {
-      executor(resolve, reject);
+      func(resolve, reject);
     } catch (err) {
       reject(err);
     }
@@ -141,7 +141,7 @@ class MyPromise {
 
 // test
 
-/* const p = new MyPromise((resolve, reject) => {
+const p = new MyPromise((resolve, reject) => {
   setTimeout(() => {
     resolve(1);
   }, 1000);
@@ -162,7 +162,7 @@ p.then((res) => {
   });
 }).then((res) => {
   console.log('ok3', res);
-}); */
+});
 
 /* function delay (time) {
   return new MyPromise((resolve, reject) => {
