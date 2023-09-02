@@ -60,7 +60,7 @@ const arrToTree2 = (arr) => {
 // * 方法3
 const arrToTree3 = (arr) => {
   const map = {},res = [];
-  //先根据pid排个序,,这是个树形结构,pid越小说明越上层
+  //先根据pid排个序,这是个树形结构,pid越小说明越上层
   arr.sort((a, b) => a.pid - b.pid);
   arr.forEach((item) => {
     map[item.id] = { ...item, children: [] };

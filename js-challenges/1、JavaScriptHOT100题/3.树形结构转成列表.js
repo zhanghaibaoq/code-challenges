@@ -90,7 +90,7 @@ function treeToList3 (tree) {
         res.push(rest);
         if (children && children.length) {
             res.push(...treeToList3(children));
-            // res=res.concat(treeToList3(children));
+            // res = res.concat(treeToList3(children));
         }
     }
     );

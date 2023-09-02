@@ -208,3 +208,11 @@ static修饰的属性和方法都是静态方法和属性,只能被类名调用,
 // Boy.desc();
 
 
+// var a=0;
+// var b=async()=>{
+//   a=a+await 10;
+//   console.log(a);
+// }
+// b();
+// a++;
+// console.log(a);
