@@ -216,3 +216,42 @@ static修饰的属性和方法都是静态方法和属性,只能被类名调用,
 // b();
 // a++;
 // console.log(a);
+
+// function getContinuous (arr) {
+//   let res = [];
+//   let temp = [];
+//   arr.forEach((item, index) => {
+//       if (item + 1 === arr[index + 1]) {
+//           temp.push(item);
+//       } else {
+//           temp.push(item);
+//           res.push(temp);
+//           temp = [];
+//       }
+//   });
+//   return res;
+// }
+
+// // js 判断一组数字是否连续，当出现连续数字时用‘-’输出。例如：[1,2,3,4,6,7,8,10] 输出：1-4|6-8|10
+// const arr = [1, 2, 3, 4, 6, 7, 8, 10, 12, 13, 14];
+// // 输出：1-4|6-8|10
+// function getStr (arr) {
+//   let str = '';
+//   let temp = [];
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i] + 1 === arr[i + 1]) {
+//       temp.push(arr[i]);
+//     } else {
+//       temp.push(arr[i]);
+//       if (temp.length > 1) {
+//         str += `${temp[0]}-${temp[temp.length - 1]}|`;
+//       } else {
+//         str += `${temp[0]}|`;
+//       }
+//       temp = [];
+//     }
+//   }
+//   return str.slice(0, str.length - 1);
+// }
+// console.log('@@@0,',getStr(arr));
+// console.log(getContinuous(arr));
