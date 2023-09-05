@@ -18,7 +18,7 @@ const freddie = new Chameleon({
 console.log(Chameleon.colorChange());
 
 
-// setTimeout(function () {
+// setTimeout(function () {`1`
 //   const p = new Promise(function (r, j) {
 //     console.log(1);
 //     r();

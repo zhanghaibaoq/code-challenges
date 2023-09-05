@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Worker 示例</title>
+</head>
+<body>
+    <h1>计算斐波那契数</h1>
+    <button id="calculateButton">计算斐波那契数</button>
+    <p id="result"></p>
+
+    <!-- 引入 Web Worker 脚本 -->
+    <script>
+        // 创建 Web Worker
+        const worker = new Worker('worker.js');
+
+        // 获取页面元素
+        const calculateButton = document.getElementById('calculateButton');
+        const resultElement = document.getElementById('result');
+
+        // 监听 Web Worker 的消息
+        // worker.addEventListener('message', (event) => {
+        //     resultElement.textContent = `计算结果：${event.data}`;
+        // });
+        worker.onmessage = function(event) {
+            resultElement.textContent = `计算结果：${event.data}`;
+        }
+        // 监听 Web Worker 的错误
+        worker.onerror = function(event) {
+            console.log(event);
+        }
+        // 发送的数据无法序列化时触发
+        worker.onmessageerror = function(event) {
+            console.log(event);
+        }
+
+        // 在按钮点击时触发 Web Worker 计算任务
+        calculateButton.addEventListener('click', () => {
+            worker.postMessage({ command: 'calculateFibonacci', n: 44 }); // 传递计算斐波那契数的指令和参数
+        });
+    </script>
+</body>
+</html>
