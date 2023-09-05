@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>https://www.runoob.com/jsref/jsref-obj-array.html</title>
+</head>
+
+<body>
+
+  <p>点击按钮检测数组的所有元素是否都大于 18 :</p>
+  <button onclick="myFunction()">点我</button>
+  <p id="demo">1</p>
+  <p id="demo1">2</p>
+  <script>
+    var ages = [32, 33, 16, 40];
+    function checkAdult (age) {
+      return age >= 18;
+    }
+    function myFunction () {
+      // innerHTML 属性设置或返回表格行的开始和结束标签之间的 HTML。
+      // document.getElementById("demo").innerHTML = ages.every(checkAdult);
+      document.getElementById("demo").innerHTML = ages.every(item => item >= 18);  //false
+      document.getElementById("demo1").innerHTML = ages.filter(age => age >= 18);  //32,33,40
+
+    }
+  </script>
+
+</body>
+
+</html>

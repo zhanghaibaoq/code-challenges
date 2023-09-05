@@ -255,8 +255,8 @@ static修饰的属性和方法都是静态方法和属性,只能被类名调用,
 // }
 // console.log('@@@0,',getStr(arr));
 // console.log(getContinuous(arr));
-const [first, ...rest] = [1, 2, 3, 4, 5];
-console.log(first, rest);
-// 对象
-const { b, ...c } = { a: 1, b: 2, c: 3, d: 4 };
-console.log(b, c);// 2 { a: 1, c: 3, d: 4 }
+// const [first, ...rest] = [1, 2, 3, 4, 5];
+// console.log(first, rest);
+// // 对象
+// const { b, ...c } = { a: 1, b: 2, c: 3, d: 4 };
+// console.log(b, c);// 2 { a: 1, c: 3, d: 4 }

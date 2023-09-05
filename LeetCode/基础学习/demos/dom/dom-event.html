@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #div1 {
+      width: 400px;
+      height: 1500px;
+      background-color: green;
+    }
+
+    #div2 {
+      width: 200px;
+      height: 200px;
+      background-color: red;
+    }
+
+    #div3 {
+      width: 100px;
+      height: 100px;
+      background-color: blue;
+    }
+  </style>
+</head>
+
+<body>
+  <button id="button1">click</button>
+  <button onclick="clickHandler()">click1</button>
+  <button id="button2">click2</button>
+  <button id="bt1">ondblclick</button>
+  <a href='https://www.baidu.com' id="ahref">跳转</a>
+  <input type="text" id="username">
+
+  <ul id="list">
+    <li>列表一</li>
+    <li>列表二</li>
+    <li>列表三</li>
+  </ul>
+
+  <div id="div2">
+    <div id="div3"></div>
+  </div>
+
+  <div id="div1"></div>
+
+
+  <script>
+    // 方式一：DOM0级事件  优点：HTML和JS是分离的  缺点：无法同时添加多个事件
+    var button = document.getElementById("button1");
+    button.onclick = function () {
+      alert("hello");
+    };
+    // button.onclick = function () {
+    //   alert("hello2"); // 当用click事件的时候，会覆盖了上面的
+    // };
+
+
+    // 方式二：HTML事件
+    function clickHandler () {
+      alert("hello1");
+    }
+
+    // 方式三：DOM2级事件  优点：不会覆盖上面的事件
+    var button2 = document.getElementById("button2");
+    button2.addEventListener("click", function () {
+      alert("hello2");
+    });
+    // button2.addEventListener("click", function () {
+    //   alert("hello3");
+    // });
+
+
+  </script>
+
+  <script>
+    var b1 = document.getElementById("bt1");
+    b1.ondblclick = function (e) {
+      console.log(e.type);
+      console.log(e.target);// 获取当前的事件节点
+      e.target.innerHTML = "hello111111111111";
+    };
+
+    var div1 = document.getElementById("div1");
+    // div1.onmousemove = function () {
+    //   console.log("光标移动了");
+    // }
+    // 鼠标滚动
+    div1.onmousewheel = function (e) {
+      console.log(e.wheelDelta);
+    };
+
+    var ahref = document.getElementById("ahref");
+    ahref.onclick = function (e) {
+      console.log(e.type);
+      e.preventDefault();// 阻止默认行为,不跳转了
+    };
+
+
+    var div2 = document.getElementById("div2");
+    div2.onclick = function (e) {
+      console.log('div2');// 获取当前的事件节点
+    };
+    var div3 = document.getElementById("div3");
+    div3.onclick = function (e) {
+      e.stopPropagation();// 阻止事件冒泡,不然的话点击div3的时候div2也会被点击
+      console.log('div3');// 获取当前的事件节点
+    };
+
+  </script>
+
+  <!-- 键盘事件 -->
+  <script>
+    var username = document.getElementById("username");
+    username.onkeyup = function (e) {
+      console.log(e.keyCode);
+      // console.log(e.target.value);
+    };
+
+    // 按下有值的键触发，数字和字母是有值的，即ctrl alt shift这样无值的键不能出发
+    username.onkeypress = function (e) {
+      // console.log('onkeypress======');
+      console.log(e.keyCode);
+      // console.log(e.target.value);
+    };
+  </script>
+
+  <!-- 事件代理或事件委托，即把子元素交给父元素去处理 -->
+  <script>
+    var list = document.getElementById("list");
+    list.addEventListener("click", function (e) {
+      console.log(e.target);// 获取当前的事件节点
+      console.log(e.target.innerHTML);
+      if (e.target.tagName.toLowerCase() === "li") {
+        e.target.style.backgroundColor = "red";
+      }
+    });
+  </script>
+</body>
+
+</html>

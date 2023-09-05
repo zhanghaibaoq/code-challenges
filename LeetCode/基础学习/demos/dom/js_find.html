@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>菜鸟教程(runoob.com)</title>
+</head>
+
+<body>
+
+    <p>点击按钮返回符合大于输入框中指定数字的数组元素。</p>
+    <p>最小年龄: <input type="number" id="ageToCheck" value="18"></p>
+    <button onclick="myFunction()">点我</button>
+
+    <p>值: <span id="demo"></span></p>
+
+    <p><strong>注意:</strong> IE 11 及更早版本不支持 findIndex() 方法。</p>
+
+    <script>
+        var ages = [4, 122, 16, 20]
+
+        function checkAdult (age) {
+            return age >= document.getElementById("ageToCheck").value
+        }
+
+        function myFunction () {
+            document.getElementById("demo").innerHTML = ages.find(checkAdult)
+        }
+    </script>
+
+</body>
+
+</html>

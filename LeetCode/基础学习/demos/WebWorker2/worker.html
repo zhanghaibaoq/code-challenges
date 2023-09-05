@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div>
+    web worker
+  </div>
+
+</body>
+<script>
+  const worker = new Worker('./worker.js');
+
+  worker.onmessage = (event) => {
+    console.log('Result from Web Worker:', event.data);
+  };
+
+  worker.onerror = (error) => {
+    console.error('Error in Web Worker:', error);
+  };
+
+  const data = [1, 2, 3, 4, 5];
+  worker.postMessage({ type: 'complexCalculation', data });
+
+  const file = './1.txt';
+  worker.postMessage({ type: 'readFile', file });
+
+</script>
+
+</html>

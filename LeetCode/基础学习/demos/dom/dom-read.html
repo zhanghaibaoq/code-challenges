@@ -1,0 +1,52 @@
+<!-- https://www.bilibili.com/video/BV1PS4y1H7bm?p=80&vd_source=eac7ee3e188e81d32edf392ab1aa352c -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div>11</div>
+  <div>2</div>
+
+  <div id="lala">33</div>
+
+  <p class="hi">你好</p>
+
+  <div class="nav">nav1</div>
+  <div class="nav">nav2</div>
+
+  <form name="login"></form>
+</body>
+
+<script>
+  // 读取元素
+  var divs = document.getElementsByTagName("div")[1];
+  console.log(divs.innerHTML);//2
+  divs.style.color = "red";
+  divs.innerHTML = "123";
+
+  var lala = document.getElementById("lala");
+  console.log(lala.innerHTML);
+
+  var ptext = document.getElementsByClassName("hi")[0].innerHTML;
+  console.log(ptext);
+
+  var nva = document.querySelector(".nav"); //css选择器 class是点 id是#
+  console.log(nva); //默认打印第一个
+
+  var nvas = document.querySelectorAll(".nav"); //css选择器 class是点 id是#
+  console.log(nvas);
+
+  // 使用率极低
+  var form = document.getElementsByName("login")[0];
+  console.log(form);
+
+</script>
+
+
+</html>

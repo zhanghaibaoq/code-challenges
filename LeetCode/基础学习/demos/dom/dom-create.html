@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div>11</div>
+  <div id="container"></div>
+  <script>
+    // 创建元素
+    var div1 = document.createElement("div");
+    div1.innerHTML = "123";
+    div1.style.color = "red";
+    document.body.appendChild(div1);
+
+    var p1 = document.createElement("p");
+    var content = document.createTextNode("你好"); //创建文本节点
+    var id1 = document.createAttribute("id"); //创建属性节点
+    id1.value = "root";
+    p1.appendChild(content);//添加文本节点
+    p1.setAttributeNode(id1);//设置属性
+    console.log(p1);
+
+    var container = document.getElementById("container");
+    container.appendChild(p1);//添加节点
+
+  </script>
+</body>
+
+</html>

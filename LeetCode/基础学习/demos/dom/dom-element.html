@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: #ccc;
+    }
+
+    .box1 {
+      background-color: rgb(245, 133, 133);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box" id="Hello">hi</div>
+
+  <script>
+    var root = document.getElementById("Hello");
+    console.log(root.id);
+    root.className = "box box1";
+
+    // classList:add,remove,toggle,contains; toggle():将某个class移入或移出，原本有就移除
+    root.classList.add("mybox");
+    // root.classList.remove("mybox");
+
+    console.log(root.innerHTML);//获取元素的内容
+    console.log(root.innerText);//innerText只能获取文本内容，不能获取html标签
+    // var str = "<a href='https://www.baidu.com'>跳转</a>";
+    // root.innerHTML = str;
+
+  </script>
+</body>
+
+</html>

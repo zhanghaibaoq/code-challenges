@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .triangle {
+      width: 0;
+      height: 0;
+      border-left: 50px solid;
+      border-right: 50px solid;
+      border-bottom: 100px solid red;
+      transform: rotate(45deg);
+
+    }
+
+    .triangle1 {
+      width: 0;
+      height: 0;
+      border-left: 50px solid red;
+      border-top: 50px solid transparent;
+      border-bottom: 50px solid transparent;
+    }
+
+    .triangle2 {
+      width: 0;
+      height: 0;
+      border-top: 100px solid red;
+      border-right: 100px solid transparent;
+    }
+
+    .triangle3 {
+      width: 0;
+      height: 0;
+      border: 100px solid;
+      border-color: orange blue red green;
+    }
+
+    .triangle4 {
+      width: 0;
+      height: 0;
+      border-bottom: 100px solid red;
+      border-right: 100px solid transparent;
+    }
+
+    .circle {
+      width: 200px;
+      height: 100px;
+      border-radius: 50%;
+      background-color: red;
+    }
+
+
+    .circle4 {
+      border: 100px solid transparent;
+      width: 0;
+      height: 0;
+      border-radius: 100px;
+      border-top-color: red;
+    }
+
+    .border {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 50px 50px;
+      border-color: transparent transparent #d9534f;
+      position: relative;
+    }
+
+    .border:after {
+      content: '';
+      border-style: solid;
+      border-width: 0 40px 40px;
+      border-color: transparent transparent #ffffff;
+      position: absolute;
+      top: 6px;
+      left: -40px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="triangle"></div>
+  <div class="triangle1"></div>
+  <div class="triangle2"></div>
+  <div class="triangle3"></div>
+  <div class="triangle4"></div>
+  <div class="circle"></div>
+  <div class="circle2"></div>
+  <div class="circle3"></div>
+  <div class="circle4"></div>
+  <div class="square"></div>
+  <div class="border"></div>
+
+</body>
+
+</html>

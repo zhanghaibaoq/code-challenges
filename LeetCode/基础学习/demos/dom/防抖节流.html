@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    h3 {
+      width: 200px;
+      height: 300px;
+      border: 5px solid red;
+    }
+  </style>
+</head>
+
+<body>
+  <button id="container">按钮</button>
+  <h3>1111</h3>
+  <h3>1111</h3>
+  <h3>1111</h3>
+  <h3>1111</h3>
+  <h3>1111</h3>
+  <h3>1111</h3>
+  <h3>1111</h3>
+  <h3>1111</h3>
+
+  <script>
+    // 防抖：用户快速反复点击，但只有最后一次点击在delay后生效,
+    // 在事件被触发n秒后再执行回调，如果在这n秒内又被触发，则重新计时
+    // 联想搜索输入框，敲很多字停下来后才调用后台搜索，减少不必要的搜索频率
+    // 按钮点击事件/input 事件，防止用户多次重复提交
+// 电话号码输入的验证， 只需停止输入后进行一次。
+    function debounce (fn, delay = 1000) {
+      let timer = null;
+      //  闭包
+      return function (...args) {
+        if (timer) {
+          clearTimeout(timer);
+        }
+        timer = setTimeout(function () {
+          fn.apply(this, args);
+        }, delay);
+      };
+    }
+
+    // 节流 单位时间内，只能有一次触发事件的回调函数执行
+    // 效果：用户快速反复点击，但一定每隔delay才生效一次
+    // 应用场景：监听页面滚动事件，防止频繁触发造成浪费
+    // 自动保存草稿功能，当用户在输入的时候(一直触发事件),单位时间内只保存一次草稿
+    function throttle (fn, delay) {
+      let timer;
+      return function (...args) {
+        if (timer) return;
+        fn.apply(this, args);
+        timer = setTimeout(function () {
+          timer = undefined;
+        }, delay);
+      };
+
+    }
+
+    function throttle2 (fn, delay) {
+      let flag = true;
+      return function () {
+        if (!flag) {
+          return false;
+        }
+        flag = false;
+        // fn();
+        setTimeout(() => {
+          fn.apply(this, arguments);
+          flag = true;
+        }, delay);
+      };
+    }
+
+    // 测试防抖
+    var count = 1;
+    var container = document.getElementById('container');
+    function getUserAction () {
+      console.log(count);
+      container.innerHTML = count++;
+    }
+    container.onclick = throttle2(getUserAction, 3000);
+
+    // 防抖滚动事件
+    // window.onscroll = debounce(scrollHandler, 2000);
+
+    // 节流
+    // window.onscroll = throttle(scrollHandler, 2000);
+
+    // function scrollHandler (e) {
+    //   var e = e || window.event;
+    //   console.log('@@', window.scrollY);
+    //   // console.log(document.documentElement.scrollTop);
+    //   // 判断向上滚动还是向下滚动
+    //   if (e?.wheelDelta > 0) {     //当鼠标滚轮向上滚动时
+    //     console.log('向上滚动');
+    //   }
+    //   if (e?.wheelDelta < 0) {     //当鼠标滚轮向下滚动时
+    //     console.log('向下滚动');
+    //   }
+    // }
+    // window.addEventListener("mousewheel", scrollHandler);
+
+
+  </script>
+</body>
+
+</html>

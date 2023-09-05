@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 200px;
+      height: 200px;
+      border: 5px solid red;
+      padding: 10px;
+      margin: 20px;
+      background-color: green;
+    }
+
+    h2 {
+      height: 200px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box" id="box"></div>
+  <h2>1</h2>
+  <h2>11</h2>
+  <h2>12</h2>
+  <h2>13</h2>
+  <h2>14</h2>
+  <h2>15</h2>
+
+  <script>
+    var box = document.getElementById("box");
+    console.log(box.clientWidth);//clientWidth = width + padding
+    console.log(box.clientHeight); //clientHeight  = height + padding
+
+    console.log(document.documentElement.clientHeight);//浏览器可视区域高度
+    console.log(document.body.clientHeight);//页面元素撑开高度
+
+    // 获取滚动高度
+    console.log(document.documentElement.scrollTop);
+
+    console.log(box.offsetHeight);//元素css垂直高度，包括padding和border
+  </script>
+</body>
+
+</html>

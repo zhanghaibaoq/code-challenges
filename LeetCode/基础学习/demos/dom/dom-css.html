@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="box" id="box">
+    11
+  </div>
+  <div id="box2"></div>
+  <div id="box3"></div>
+  <script>
+    // 方式一
+    var box = document.getElementById("box");
+    box.setAttribute("style", "width:200px;height:200px;border:5px solid red;padding:10px;margin:20px;background-color:green;");
+    // box.style.color = 'red';
+
+    // 方式二 建议
+    var box2Style = document.getElementById("box2").style;
+    box2Style.width = "200px";
+    box2Style.height = "200px";
+    box2Style.border = "5px solid red";
+    box2Style.backgroundColor = "pink";
+
+    // 方式三
+    var box3 = document.getElementById("box3");
+    box3.style.cssText = "width:200px;height:200px;border:5px solid red;padding:10px;margin:20px;background-color:green;";
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #div1 {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="div1"></div>
+
+  <script>
+    // var timmer = setTimeout(function () {
+    //   alert("hello");
+    // }, 3000);
+    // // 取消定时器
+    // clearTimeout(timmer);
+
+
+    var name = 'lala';
+    var user = {
+      name: 'hi',
+      getName: function () {
+        // console.log(this.name); //hi
+
+        // setTimeout(function () {
+        //   console.log(this.name); //hi
+        // }.bind(this), 2000);
+
+        // setTimeout(function () {
+        //   console.log(this.name); //lala //定时器中的this指向全局对象，即window
+        // }, 2000);
+
+        // var that = this;//这样就是当前了
+        // setTimeout(function () {
+        //   console.log(that.name); //hi
+        // }, 2000);
+
+        // setTimeout(() => {
+        //   console.log(this.name); //hi  箭头函数体内的this对象，就是定义该函数时所在的作用域指向的对象，而不是使用时所在的作用域指向的对象。
+        // }, 2000);
+
+      },
+      // getName2: () => {
+      //   console.log(this.name); //lala  //箭头函数自己没有this,箭头函数中所使用的this来自于函数作用域链。
+      // }
+    };
+    user.getName();
+    // user.getName2();
+
+    // var i = 0;
+    // setInterval(function () {
+    //   console.log(i);
+    //   i++;
+    // }, 1000);
+    var divdom = document.getElementById('div1');
+    // divdom.style.opacity = 0.2
+    var opcity = 1;
+    var fader = setInterval(function () {
+      if (opcity > 0) {
+        opcity -= 0.05;
+        divdom.style.opacity = opcity;
+      }
+      else {
+        // opcity = 1;
+        clearInterval(fader);
+      }
+    }, 200);
+
+  </script>
+
+</body>
+
+</html>
