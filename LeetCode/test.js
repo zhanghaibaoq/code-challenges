@@ -258,5 +258,21 @@ static修饰的属性和方法都是静态方法和属性,只能被类名调用,
 // const [first, ...rest] = [1, 2, 3, 4, 5];
 // console.log(first, rest);
 // // 对象
-// const { b, ...c } = { a: 1, b: 2, c: 3, d: 4 };
-// console.log(b, c);// 2 { a: 1, c: 3, d: 4 }
+
+// function generateAllRedStrings(n, current = "", result = []) {
+//   if (n === 0) {
+//     result.push(current);
+//     return;
+//   }
+
+//   // 递归生成字符串
+//   generateAllRedStrings(n - 1, current + 'r', result);
+//   generateAllRedStrings(n - 1, current + 'e', result);
+//   generateAllRedStrings(n - 1, current + 'd', result);
+// }
+
+// // 示例用法
+// const n = 3; // 设置字符串长度
+// const allRedStrings = [];
+// generateAllRedStrings(n, "", allRedStrings);
+// console.log(allRedStrings); // 输出所有情况
