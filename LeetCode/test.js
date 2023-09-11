@@ -276,3 +276,218 @@ static修饰的属性和方法都是静态方法和属性,只能被类名调用,
 // const allRedStrings = [];
 // generateAllRedStrings(n, "", allRedStrings);
 // console.log(allRedStrings); // 输出所有情况
+
+// console.log(NaN == NaN);
+// console.log(null == undefined);
+// console.log(!![]);
+// console.log([]==true);
+
+// console.log(isNaN('1'));
+// console.log([] instanceof Array);
+// console.log(parseInt('1a')===1);
+
+
+// function toggleCase(str) {
+//   return str.replace(/[a-z]/gi, function(char) {
+//     return char.toUpperCase() === char ? char.toLowerCase() : char.toUpperCase();
+//   });
+// }
+
+// let result = toggleCase('Hello World!');
+// console.log(result); // hELLO wORLD!
+// console.log(parseInt('0x111'));//273,16进制转10进制
+
+// function foo () {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       resolve(3);
+//     }, 200);
+//     reject('errMsg');
+//   });
+// }
+// foo().then(res => console.log(res)).catch(err => console.log(err)).then(res => console.log(res)).catch(err => console.log(err));
+
+// function fn(nums, k, t) {
+//   const numLen = nums.length;
+//   for (let i = 0; i < numLen; i++) {
+//     for (let j = i + 1; j <= i + k && j < numLen; j++) {
+//       if (Math.abs(nums[i] - nums[j]) <= t) {
+//         return true;
+//       }
+//     }
+//   }
+//   return false;
+// }
+
+
+// let nums = [1, 2, 3, 1], k = 3, t = 0;
+// console.log(fn(nums, k, t)); // true
+// 二叉树
+// function countPathsWithOneMoreOne(root) {
+//   if (!root) {
+//       return 0;
+//   }
+
+//   let count = 0;
+
+//   function dfs(node, ones, zeros) {
+//       if (!node) {
+//           return;
+//       }
+
+//       ones += node.val === 1 ? 1 : 0;
+//       zeros += node.val === 0 ? 1 : 0;
+
+//       if (!node.left && !node.right) {
+//           if (ones === zeros + 1) {
+//               count++;
+//           }
+//           return;
+//       }
+
+//       dfs(node.left, ones, zeros);
+//       dfs(node.right, ones, zeros);
+//   }
+
+//   dfs(root, 0, 0);
+//   return count;
+// }
+
+// // 示例用法
+// const tree = {
+//   val: 1,
+//   left: {
+//       val: 0,
+//       left: {
+//           val: 0,
+//           left: null,
+//           right: null
+//       },
+//       right: {
+//           val: 1,
+//           left: null,
+//           right: null
+//       }
+//   },
+//   right: {
+//       val: 0,
+//       left: null,
+//       right: {
+//           val: 1,
+//           left: null,
+//           right: null
+//       }
+//   }
+// };
+
+// console.log(countPathsWithOneMoreOne(tree))// 2
+
+// function robot(command) {
+//   let x = 0;
+//   let y = 0;
+
+//   for (let i = 0; i < command.length; i++) {
+//     const direction = command[i];
+//     const step = Number(command[++i]);
+    
+//     switch(direction) {
+//       case 'e':
+//         x += step;
+//         break;
+//       case 'w':
+//         x -= step;
+//         break;
+//       case 'n':
+//         y += step;
+//         break;
+//       case 's':
+//         y -= step;
+//         break;
+//     }
+//   }
+
+//   return [x, y];
+// }
+
+// const command = 'e1s1w2n2';
+// // console.log(robot(command)); 
+// // 定义菜单树形结构数据
+// let menuData = {
+//   id: 0,
+//   children: [
+//     {
+//       id: 1,
+
+//     },
+//     {
+//       id: 2,
+//     },
+//     {
+//       id: 3,
+//       children: [
+//         {
+//           id: 4,
+//         },
+//         {
+//           id: 5,
+//         },
+//       ],
+//     },
+    
+//   ]
+// }
+// let permissonData = [1,2,3,4];
+
+// function filterMenu(menu, permissions) {
+//   const result = {...menu};
+//   filterNode(result);
+//   return result;
+//   function filterNode(node) {
+//     if (!node) return;
+//     if (node.children) {
+//       node.children = node.children.filter(child => {
+//         const hasPermission = permissions.includes(child.id);
+//         if (hasPermission) {
+//           filterNode(child);
+//           return true;
+//         }
+//         return false;
+//       });
+//     }
+//   }
+
+// }
+// console.log(filterMenu(menuData, permissonData));// { id: 0, children: [ { id: 1 }, { id: 2 } ] }
+
+
+// 读取菜单数据和用户权限列表
+// const menuInput = prompt('请输入菜单数据：');
+const userPermissionsInput = '1,2'
+
+const menuData = {"id":"0","children":[{"id":"1"},{"id":"2"},{"id":"3"}]}
+const userPermissions = new Set(userPermissionsInput.split(',').map(Number));
+
+// 定义函数来过滤菜单树
+function filterMenu(menu, userPermissions) {
+  // 如果当前节点没有子节点，检查用户权限是否包含该节点的id
+  if (!menu.children) {
+    const menuId = parseInt(menu.id);
+    return userPermissions.has(menuId);
+  }
+
+  // 如果当前节点有子节点，递归过滤子节点
+  menu.children = menu.children.filter((child) => filterMenu(child, userPermissions));
+
+  // 如果过滤后没有子节点，返回null，否则返回过滤后的子节点列表
+  if (menu.children.length === 0) {
+    return null;
+  } else {
+    return menu;
+  }
+}
+
+// 过滤菜单树
+const filteredMenu = filterMenu(menuData, userPermissions);
+
+// 输出结果
+console.log(JSON.stringify(filteredMenu));
